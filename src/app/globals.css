@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&family=Italiana&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import "tailwindcss";
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+:root {
+  --radius: 0.5rem;
+  --color-blush: #FFF5F5;
+  --color-rose-gold: #B76E79;
+  --color-rose-deep: #8E5B61;
+  --color-ivory: #FDFBF7;
+  --color-gold: #C5A059;
+  --color-text: #4A4A4A;
+  --background: #FFF5F5;
+  --foreground: #4A4A4A;
+  --cream: #FFF5F5;
+  --card: #FFFFFF;
+  --card-foreground: #4A4A4A;
+  --primary: #8E5B61;
+  --primary-foreground: #FFFFFF;
+  --secondary: #B76E79;
+  --secondary-foreground: #FFFFFF;
+  --gold: #C5A059;
+  --border: rgba(183, 110, 121, 0.2);
+  --input: rgba(183, 110, 121, 0.25);
+  --ring: #C5A059;
+}
+
+html {
+  scroll-behavior: smooth !important;
+}
+
+body {
+  background-color: #FFF5F5;
+  color: #4A4A4A;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
