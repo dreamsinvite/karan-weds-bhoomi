@@ -157,7 +157,7 @@ export const invitation = {
       address: "Discover Resorts, Karjat",
       mapUrl: "https://maps.google.com/?q=Centrum+Discover+Resorts+Karjat",
       attireTitle: "",
-      bgVideo: "https://q7pv2gthbvkjs86k.public.blob.vercel-storage.com/templates/wedding/karan-weds-bhoomi/gemini_generated_video_fa6ad334__1___1_.mp4",
+      bgVideo: "https://q7pv2gthbvkjs86k.public.blob.vercel-storage.com/templates/wedding/karan-weds-bhoomi/WhatsApp%20Video%202026-10-08%20at%206.02.39%20AM%20%281%29.mp4",
       topPadding: "pt-[20px] sm:pt-[30px]",
     },
     {
