@@ -458,11 +458,13 @@ export default function Main() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.0, ease: "easeOut" }}
-                className="relative z-10 w-full max-w-[340px] mx-auto pt-35 sm:pt-40 px-4 flex flex-col items-center"
+                className="relative z-10 w-full max-w-[340px] mx-auto pt-30 sm:pt-40 px-4 flex flex-col items-center"
               >
                 {/* Sacred Mantra */}
-                <div className="text-[#b91c1c] text-xs font-bold tracking-widest mb-3 drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)]">
-                  <span>卐 || Shree Ganeshaya Namah || 卐</span>
+                <div className="text-[#b91c1c] text-xs font-bold tracking-widest mb-3 drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)] flex items-center justify-center gap-2">
+                  <SwastikIcon className="w-3.5 h-3.5 shrink-0" />
+                  <span>|| Shree Ganeshaya Namah ||</span>
+                  <SwastikIcon className="w-3.5 h-3.5 shrink-0" />
                 </div>
 
                 <span className="text-[10px] tracking-[0.35em] uppercase font-bold text-[#8E5B61] block drop-shadow-[0_1px_2px_rgba(255,255,255,0.8)]">
@@ -551,3 +553,37 @@ function CountdownTimer({ date }: { date: string }) {
     </div>
   );
 }
+
+export function SwastikIcon({ className = "w-3.5 h-3.5 inline-block shrink-0" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 100 100"
+      className={className}
+      fill="currentColor"
+      stroke="currentColor"
+      aria-hidden="true"
+    >
+      {/* 4 Connected Arms of the Swastika */}
+      <path
+        d="M 14 14 L 14 50 L 86 50 L 86 86"
+        fill="none"
+        strokeWidth="9"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M 14 86 L 50 86 L 50 14 L 86 14"
+        fill="none"
+        strokeWidth="9"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      {/* 4 Sacred Dots (Bindus) in each quadrant */}
+      <circle cx="31" cy="31" r="5" stroke="none" />
+      <circle cx="69" cy="31" r="5" stroke="none" />
+      <circle cx="31" cy="69" r="5" stroke="none" />
+      <circle cx="69" cy="69" r="5" stroke="none" />
+    </svg>
+  );
+}
+
