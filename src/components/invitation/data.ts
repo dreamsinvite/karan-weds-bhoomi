@@ -69,10 +69,10 @@ export const invitation = {
     grandparents: "Late Smt. Sushila & Late Shri Vijaysinh Damodar Sundrani\n& Late Smt. Madhuri & Late Shri Bhupendra Jadhavji Palan",
     family: "Sundrani Family",
     compliments: {
-      from: "Late Shri Narayan Damodar Rokhana\n&\nSmt. Jayshree Paresh Chandan",
+      from: "",
       note: "To mark the auspicious commencement of Karan & Bhoomi’s lifelong journey, your loving presence and shower of blessings will grace our family’s most treasured occasion",
       closing: "We look forward to welcoming you with open hearts",
-      noteBlessings: "Blessings Only",
+      noteBlessings: "With love,",
     },
   },
 

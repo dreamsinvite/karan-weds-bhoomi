@@ -310,41 +310,51 @@ export default function Main() {
               className="relative z-10 py-16 px-6 bg-[#FFF5F5]/95 backdrop-blur-[1px] text-center border-t border-[#B76E79]/20 overflow-hidden"
             >
               <div className="w-full relative z-10">
-                <h3 className="font-serif italic text-3xl mb-6 text-[#8E5B61]">With Best Compliments from</h3>
+                <h3 className="font-serif italic text-3xl mb-6 text-[#8E5B61]">
+                  {invitation.groom.compliments.from ? "With Best Compliments from" : "With Best Compliments"}
+                </h3>
 
                 <div className="p-6 sm:p-8 rounded-3xl border border-[#B76E79]/20 bg-white/95 shadow-[0_10px_30px_rgba(183,110,121,0.06)] text-center max-w-[390px] mx-auto">
-                  {/* From Family Names */}
-                  <div className="font-serif italic text-[14px] sm:text-[15.5px] font-bold text-[#8E5B61] leading-snug space-y-1">
-                    {invitation.groom.compliments.from.split("\n").map((line, i) => {
-                      const trimmed = line.trim();
-                      if (trimmed === "&") {
-                        return (
-                          <p key={i} className="text-sm sm:text-base text-[#C5A059] font-serif font-bold my-0.5">
-                            &amp;
-                          </p>
-                        );
-                      }
-                      return (
-                        <p key={i} className="whitespace-nowrap">
-                          {trimmed}
-                        </p>
-                      );
-                    })}
-                  </div>
+                  {/* From Family Names (if provided) */}
+                  {invitation.groom.compliments.from && (
+                    <>
+                      <div className="font-serif italic text-[14px] sm:text-[15.5px] font-bold text-[#8E5B61] leading-snug space-y-1">
+                        {invitation.groom.compliments.from.split("\n").map((line, i) => {
+                          const trimmed = line.trim();
+                          if (trimmed === "&") {
+                            return (
+                              <p key={i} className="text-sm sm:text-base text-[#C5A059] font-serif font-bold my-0.5">
+                                &amp;
+                              </p>
+                            );
+                          }
+                          return (
+                            <p key={i} className="whitespace-nowrap">
+                              {trimmed}
+                            </p>
+                          );
+                        })}
+                      </div>
 
-                  <div className="w-16 h-[1px] bg-[#C5A059]/40 mx-auto my-4" />
+                      <div className="w-16 h-[1px] bg-[#C5A059]/40 mx-auto my-4" />
+                    </>
+                  )}
 
                   <p className="text-xs sm:text-sm text-[#7A6568] font-serif italic leading-relaxed px-2">
                     &ldquo;{invitation.groom.compliments.note}&rdquo;
                   </p>
 
-                  <p className="text-xs sm:text-sm text-[#4A4A4A] font-semibold mt-4">
-                    {invitation.groom.compliments.closing}
-                  </p>
+                  {invitation.groom.compliments.closing && (
+                    <p className="text-xs sm:text-sm text-[#4A4A4A] font-semibold mt-4">
+                      {invitation.groom.compliments.closing}
+                    </p>
+                  )}
 
-                  <div className="mt-5 inline-block px-5 py-1.5 rounded-full bg-[#FFF0F0] border border-[#B76E79]/30 text-xs font-bold uppercase tracking-widest text-[#8E5B61] shadow-2xs">
-                    {invitation.groom.compliments.noteBlessings}
-                  </div>
+                  {invitation.groom.compliments.noteBlessings && (
+                    <p className="text-sm sm:text-base text-[#8E5B61] font-serif italic font-semibold mt-4">
+                      {invitation.groom.compliments.noteBlessings}
+                    </p>
+                  )}
                 </div>
               </div>
             </section>
