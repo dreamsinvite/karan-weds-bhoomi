@@ -459,9 +459,9 @@ export function EnvelopeOpener({
             />
             <path d="M56 46C52 46 48 50 48 56C48 60 51 63 54 65L52 74H56" fill="#c9953a" />
             <path d="M18 42C14 46 14 50 18 54" stroke="#c9953a" strokeWidth="1.8" />
-            {/* Center Initial B on Left Door */}
+            {/* Center Initial K on Left Door */}
             <text x="34" y="60" fill="#ffd97d" fontSize="13" fontWeight="bold" fontFamily="'Playfair Display', serif" textAnchor="middle">
-              B
+              {groomName.charAt(0) || "K"}
             </text>
           </svg>
         </div>
@@ -499,9 +499,9 @@ export function EnvelopeOpener({
             />
             <path d="M0 46C4 46 8 50 8 56C8 60 5 63 2 65L4 74H0" fill="#c9953a" />
             <path d="M38 42C42 46 42 50 38 54" stroke="#c9953a" strokeWidth="1.8" />
-            {/* Center Initial K on Right Door */}
+            {/* Center Initial B on Right Door */}
             <text x="22" y="60" fill="#ffd97d" fontSize="13" fontWeight="bold" fontFamily="'Playfair Display', serif" textAnchor="middle">
-              K
+              {brideName.charAt(0) || "B"}
             </text>
           </svg>
         </div>
