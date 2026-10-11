@@ -34,6 +34,15 @@ const WEDDING_EVENTS = [
   "mangal-parinay",
 ];
 
+const WEDDING_INTRO_VIDEO =
+  "https://q7pv2gthbvkjs86k.public.blob.vercel-storage.com/templates/wedding/karan-weds-bhoomi/18-Bhoomi.mp4";
+
 export default function WeddingPage() {
-  return <Main eventIds={WEDDING_EVENTS} showRSVP={false} />;
+  return (
+    <Main
+      eventIds={WEDDING_EVENTS}
+      showRSVP={false}
+      introVideoUrl={WEDDING_INTRO_VIDEO}
+    />
+  );
 }

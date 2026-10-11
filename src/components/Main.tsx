@@ -31,16 +31,23 @@ const VIDEO_ASSETS = {
 interface MainProps {
   eventIds?: string[];
   showRSVP?: boolean;
+  introVideoUrl?: string;
 }
 
-export default function Main({ eventIds, showRSVP = true }: MainProps = {}) {
+export default function Main({
+  eventIds,
+  showRSVP = true,
+  introVideoUrl: customIntroVideoUrl,
+}: MainProps = {}) {
   const [mounted, setMounted] = useState(false);
   const [cardOpened, setCardOpened] = useState(false);
   const [introFinished, setIntroFinished] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [isPreloading, setIsPreloading] = useState(true);
   const [isGiftOpened, setIsGiftOpened] = useState(false);
-  const [introVideoUrl, setIntroVideoUrl] = useState<string>(VIDEO_ASSETS.introGate);
+  const [introVideoUrl, setIntroVideoUrl] = useState<string>(
+    customIntroVideoUrl || VIDEO_ASSETS.introGate
+  );
   const [heroVideoUrl, setHeroVideoUrl] = useState<string>(VIDEO_ASSETS.heroSection);
 
   const introReadyRef = useRef(false);
