@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://karan-weds-bhoomi.netlify.app"),
+  metadataBase: new URL("https://www.karanwedsbhoomi.in"),
   title: "ચિ. કરણ & અ. સૌ. ભૂમિ - લગ્ન પ્રસંગ આમંત્રણ પત્રિકા | Karan & Bhoomi #BKomeOne∞",
   description: "The Wedding Celebration of Karan Sundrani & Bhoomi Rokhana - 17th & 18th December 2026 at Discover Resorts, Karjat.",
   openGraph: {
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     siteName: "Karan & Bhoomi Wedding Invitation",
     images: [
       {
-        url: "/templates/wedding/nitin-weds-rita/gate-image.png",
+        url: "https://q7pv2gthbvkjs86k.public.blob.vercel-storage.com/templates/wedding/karan-weds-bhoomi/b-k-p.png",
         width: 1200,
         height: 630,
         alt: "Karan & Bhoomi Wedding Invitation Preview",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Karan & Bhoomi - Wedding Invitation (#BKomeOne∞)",
     description: "The Wedding Celebration of Karan Sundrani & Bhoomi Rokhana - 17th & 18th December 2026 at Discover Resorts, Karjat",
-    images: ["/templates/wedding/nitin-weds-rita/gate-image.png"],
+    images: ["https://q7pv2gthbvkjs86k.public.blob.vercel-storage.com/templates/wedding/karan-weds-bhoomi/b-k-p.png"],
   },
 };
 
