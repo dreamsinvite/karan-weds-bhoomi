@@ -143,66 +143,7 @@ export const MusicPlayer = forwardRef<MusicPlayerHandle, MusicPlayerProps>(
       }
     };
 
-    if (!isOpened) return null;
-
-  return (
-    <motion.button
-      onClick={toggleMusic}
-      aria-label={isPlaying ? "Pause music" : "Play music"}
-      initial={{ opacity: 0, scale: 0.6, y: 30 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.2, ease: "backOut" }}
-      whileTap={{ scale: 0.92 }}
-      className="fixed bottom-5 right-5 z-[99] group cursor-pointer focus:outline-none select-none"
-    >
-      <AnimatePresence>
-        {isPlaying && (
-          <>
-            <motion.span
-              key="pulse1"
-              className="absolute inset-0 rounded-full bg-[#B76E79]/40"
-              initial={{ scale: 1, opacity: 0.6 }}
-              animate={{ scale: 1.8, opacity: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.8, repeat: Infinity, ease: "easeOut" }}
-            />
-            <motion.span
-              key="pulse2"
-              className="absolute inset-0 rounded-full bg-[#B76E79]/25"
-              initial={{ scale: 1, opacity: 0.5 }}
-              animate={{ scale: 2.5, opacity: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 2.2, repeat: Infinity, delay: 0.4, ease: "easeOut" }}
-            />
-          </>
-        )}
-      </AnimatePresence>
-
-      <span className="relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-r from-[#B76E79] to-[#8E5B61] text-white shadow-[0_8px_25px_rgba(142,91,97,0.35)] border border-white/20 transition-transform group-hover:scale-105">
-        <AnimatePresence mode="wait" initial={false}>
-          {isPlaying ? (
-            <motion.div
-              key="playing"
-              initial={{ opacity: 0, rotate: -90 }}
-              animate={{ opacity: 1, rotate: 0 }}
-              exit={{ opacity: 0, rotate: 90 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Music className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="paused"
-              initial={{ opacity: 0, rotate: -90 }}
-              animate={{ opacity: 1, rotate: 0 }}
-              exit={{ opacity: 0, rotate: 90 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Music2 className="w-5 h-5 sm:w-6 sm:h-6 text-white/80" />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </span>
-    </motion.button>
-  );
-});
+    // Audio plays automatically in the background; UI toggle icon is hidden as requested
+    return null;
+  }
+);

@@ -518,12 +518,13 @@ export function TimelineSection({ eventIds }: { eventIds?: string[] } = {}) {
                   <button
                     onClick={() =>
                       setSelectedEventIndex((prev) =>
-                        prev !== null
-                          ? (prev - 1 + displayedEvents.length) % displayedEvents.length
-                          : 0
+                        prev !== null && prev > 0 ? prev - 1 : 0
                       )
                     }
-                    className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1.5 rounded-lg text-[#ffd97d] hover:text-white hover:bg-white/15 active:scale-95 transition-all cursor-pointer"
+                    disabled={selectedEventIndex === 0}
+                    className={`inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1.5 rounded-lg text-[#ffd97d] hover:text-white hover:bg-white/15 active:scale-95 transition-all cursor-pointer ${
+                      selectedEventIndex === 0 ? "opacity-35 pointer-events-none" : ""
+                    }`}
                   >
                     <ChevronLeft size={14} strokeWidth={2.5} />
                     <span>Prev</span>
@@ -550,17 +551,27 @@ export function TimelineSection({ eventIds }: { eventIds?: string[] } = {}) {
                     </div>
                   </div>
 
-                  <button
-                    onClick={() =>
-                      setSelectedEventIndex((prev) =>
-                        prev !== null ? (prev + 1) % displayedEvents.length : 0
-                      )
-                    }
-                    className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1.5 rounded-lg text-[#ffd97d] hover:text-white hover:bg-white/15 active:scale-95 transition-all cursor-pointer"
-                  >
-                    <span>Next</span>
-                    <ChevronRight size={14} strokeWidth={2.5} />
-                  </button>
+                  {selectedEventIndex === displayedEvents.length - 1 ? (
+                    <button
+                      onClick={() => setSelectedEventIndex(null)}
+                      className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1.5 rounded-lg bg-[#ffd97d]/20 text-[#ffd97d] hover:text-white hover:bg-[#ffd97d]/35 active:scale-95 transition-all cursor-pointer border border-[#ffd97d]/40"
+                    >
+                      <span>Close</span>
+                      <X size={14} strokeWidth={2.5} />
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() =>
+                        setSelectedEventIndex((prev) =>
+                          prev !== null ? prev + 1 : 0
+                        )
+                      }
+                      className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1.5 rounded-lg text-[#ffd97d] hover:text-white hover:bg-white/15 active:scale-95 transition-all cursor-pointer"
+                    >
+                      <span>Next</span>
+                      <ChevronRight size={14} strokeWidth={2.5} />
+                    </button>
+                  )}
                 </div>
 
                 {/* Loading Spinner until video buffer */}

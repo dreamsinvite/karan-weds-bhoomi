@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, Clock, MapPin, Gift, Heart, Sparkles, Navigation, Users, Shirt } from "lucide-react";
+import { Calendar, Clock, MapPin, Gift, Heart, Sparkles, Navigation, Users, Shirt, ChevronDown } from "lucide-react";
 import "./styles.css";
 
 import { Hero } from "./invitation/Hero";
@@ -51,6 +51,36 @@ export default function Main({ eventIds, showRSVP = true }: MainProps = {}) {
   const introContainerRef = useRef<HTMLDivElement>(null);
   const introVideoRef = useRef<IntroVideoPlayerHandle>(null);
   const musicPlayerRef = useRef<MusicPlayerHandle | null>(null);
+
+  const [showScrollDown, setShowScrollDown] = useState(false);
+  const footerRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!introFinished) {
+      setShowScrollDown(false);
+      return;
+    }
+
+    setShowScrollDown(true);
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Hide scroll down icon when footer comes into view
+        setShowScrollDown(!entry.isIntersecting);
+      },
+      { threshold: 0.08 }
+    );
+
+    if (footerRef.current) {
+      observer.observe(footerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [introFinished]);
+
+  const handleScrollDown = () => {
+    window.scrollBy({ top: window.innerHeight * 0.8, behavior: "smooth" });
+  };
 
   const handleIntroCanPlay = () => {
     if (!introReadyRef.current) {
@@ -208,6 +238,30 @@ export default function Main({ eventIds, showRSVP = true }: MainProps = {}) {
           >
             {/* Background Music Player */}
             <MusicPlayer ref={musicPlayerRef} isOpened={introFinished} />
+
+            {/* Sticky Scroll Down Indicator until Footer */}
+            <AnimatePresence>
+              {introFinished && showScrollDown && (
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 15 }}
+                  transition={{ duration: 0.3 }}
+                  onClick={handleScrollDown}
+                  className="fixed bottom-6 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center cursor-pointer active:scale-90 transition-transform select-none"
+                  title="Scroll down"
+                  aria-label="Scroll down"
+                >
+                  <motion.div
+                    animate={{ y: [0, 5, 0] }}
+                    transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
+                    className="w-10 h-10 rounded-full bg-black/45 backdrop-blur-md flex items-center justify-center border border-white/40 text-white shadow-[0_4px_16px_rgba(0,0,0,0.35)] hover:bg-black/60 transition-colors"
+                  >
+                    <ChevronDown size={22} strokeWidth={2.5} />
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             {/* Ambient mobile background particle rain */}
             {introFinished && (
@@ -467,6 +521,7 @@ export default function Main({ eventIds, showRSVP = true }: MainProps = {}) {
 
             {/* 8. Elegant Footer / Closing */}
             <section
+              ref={footerRef}
               className="relative z-10 w-full min-h-[680px] sm:min-h-[720px] flex flex-col justify-between text-center overflow-hidden border-t border-[#B76E79]/20"
               style={{
                 backgroundImage: `url("https://q7pv2gthbvkjs86k.public.blob.vercel-storage.com/templates/wedding/karan-weds-bhoomi/footer.png")`,
