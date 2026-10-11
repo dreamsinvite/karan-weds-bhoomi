@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.karanwedsbhoomi.in"),
-  title: "ચિ. કરણ & અ. સૌ. ભૂમિ - લગ્ન પ્રસંગ આમંત્રણ પત્રિકા | Karan & Bhoomi #BKomeOne∞",
+  title: "Karan & Bhoomi - Wedding Invitation | #BKomeOne∞",
   description: "The Wedding Celebration of Karan Sundrani & Bhoomi Rokhana - 17th & 18th December 2026 at Discover Resorts, Karjat.",
   openGraph: {
     title: "Karan & Bhoomi - Wedding Invitation (#BKomeOne∞)",
