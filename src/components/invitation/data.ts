@@ -56,7 +56,7 @@ export const invitation = {
     family: "Rokhana Family",
     compliments: {
       from: "Late Shri Narayan Damodar Rokhana\n&\nSmt. Jayshree Paresh Chandan",
-      note: "To mark the auspicious commencement of Karan & Bhoomi’s lifelong journey, your loving presence and shower of blessings will grace our family’s most treasured occasion",
+      note: "To mark the auspicious commencement of \nKaran & Bhoomi’s lifelong journey, your loving presence and shower of blessings will grace our family’s most treasured occasion",
       closing: "We look forward to welcoming you with open hearts",
       noteBlessings: "Blessings Only",
     },
@@ -70,7 +70,7 @@ export const invitation = {
     family: "Sundrani Family",
     compliments: {
       from: "",
-      note: "To mark the auspicious commencement of Karan & Bhoomi’s lifelong journey, your loving presence and shower of blessings will grace our family’s most treasured occasion",
+      note: "To mark the auspicious commencement of \nKaran & Bhoomi’s lifelong journey, your loving presence and shower of blessings will grace our family’s most treasured occasion",
       closing: "We look forward to welcoming you with open hearts",
       withLove: "With Love\nSundrani Family",
       noteBlessings: "Blessings Only",

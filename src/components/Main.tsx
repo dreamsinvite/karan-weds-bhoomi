@@ -401,7 +401,7 @@ export default function Main({ eventIds, showRSVP = true }: MainProps = {}) {
                     </>
                   )}
 
-                  <p className="text-xs sm:text-sm text-[#8E5B61]/90 font-serif italic leading-relaxed px-2">
+                  <p className="text-xs sm:text-sm text-[#8E5B61]/90 font-serif italic leading-relaxed px-2 whitespace-pre-line">
                     &ldquo;{invitation.groom.compliments.note}&rdquo;
                   </p>
 
