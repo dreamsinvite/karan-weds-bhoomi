@@ -23,25 +23,48 @@ import { LazyEventVideo } from "./LazyEventVideo";
 
 import gardenBg from "@/assets/garden-bg.png";
 
-const EVENT_ICONS = [
-  Sparkles,       // Mandap Muhurat
-  Music,          // Rings & Rhythm
-  Sun,            // Pithi & Petals
-  Car,            // Band Baaja Baarat
-  HeartHandshake, // Garlands & Grace
-  Flame,          // Mangal Parinay
-];
+const EVENT_META: Record<
+  string,
+  {
+    icon: any;
+    illustration: string;
+  }
+> = {
+  "mandap-muhurat": {
+    icon: Sparkles,
+    illustration: "/templates/wedding/karan-weds-bhoomi/ganesh-transparent.png",
+  },
+  "rings-and-rhythm": {
+    icon: Music,
+    illustration:
+      "https://q7pv2gthbvkjs86k.public.blob.vercel-storage.com/templates/wedding/siddhant-weds-anissa/sangeet.png",
+  },
+  "pithi-and-petals": {
+    icon: Sun,
+    illustration:
+      "https://q7pv2gthbvkjs86k.public.blob.vercel-storage.com/templates/wedding/siddhant-weds-anissa/carnival.png",
+  },
+  "band-baaja-baarat": {
+    icon: Car,
+    illustration:
+      "https://q7pv2gthbvkjs86k.public.blob.vercel-storage.com/templates/wedding/siddhant-weds-anissa/barat.png",
+  },
+  "garlands-and-grace": {
+    icon: HeartHandshake,
+    illustration:
+      "https://q7pv2gthbvkjs86k.public.blob.vercel-storage.com/templates/wedding/karan-weds-bhoomi/Traditional.png",
+  },
+  "mangal-parinay": {
+    icon: Flame,
+    illustration:
+      "https://q7pv2gthbvkjs86k.public.blob.vercel-storage.com/templates/wedding/siddhant-weds-anissa/phere.png",
+  },
+};
 
-const EVENT_ILLUSTRATIONS = [
-  "https://q7pv2gthbvkjs86k.public.blob.vercel-storage.com/templates/wedding/siddhant-weds-anissa/carnival.png",  // Mandap Muhurat
-  "https://q7pv2gthbvkjs86k.public.blob.vercel-storage.com/templates/wedding/siddhant-weds-anissa/sangeet.png",   // Rings & Rhythm
-  "https://q7pv2gthbvkjs86k.public.blob.vercel-storage.com/templates/wedding/siddhant-weds-anissa/carnival.png",  // Pithi & Petals
-  "https://q7pv2gthbvkjs86k.public.blob.vercel-storage.com/templates/wedding/siddhant-weds-anissa/barat.png",     // Band Baaja Baarat
-  "https://q7pv2gthbvkjs86k.public.blob.vercel-storage.com/templates/wedding/karan-weds-bhoomi/Traditional.png", // Garlands & Grace
-  "https://q7pv2gthbvkjs86k.public.blob.vercel-storage.com/templates/wedding/siddhant-weds-anissa/phere.png",     // Mangal Parinay
-];
-
-export function TimelineSection() {
+export function TimelineSection({ eventIds }: { eventIds?: string[] } = {}) {
+  const displayedEvents = eventIds
+    ? invitation.events.filter((e) => eventIds.includes(e.id))
+    : invitation.events;
   const [selectedEventIndex, setSelectedEventIndex] = useState<number | null>(null);
   const [mounted, setMounted] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
@@ -66,12 +89,12 @@ export function TimelineSection() {
           setSelectedEventIndex(null);
         } else if (e.key === "ArrowRight") {
           setSelectedEventIndex((prev) =>
-            prev !== null ? (prev + 1) % invitation.events.length : 0
+            prev !== null ? (prev + 1) % displayedEvents.length : 0
           );
         } else if (e.key === "ArrowLeft") {
           setSelectedEventIndex((prev) =>
             prev !== null
-              ? (prev - 1 + invitation.events.length) % invitation.events.length
+              ? (prev - 1 + displayedEvents.length) % displayedEvents.length
               : 0
           );
         }
@@ -87,10 +110,10 @@ export function TimelineSection() {
       document.body.style.overflow = "auto";
       document.documentElement.style.overflow = "auto";
     }
-  }, [selectedEventIndex]);
+  }, [selectedEventIndex, displayedEvents.length]);
 
   const activeEvent: WeddingEvent | null =
-    selectedEventIndex !== null ? invitation.events[selectedEventIndex] : null;
+    selectedEventIndex !== null ? displayedEvents[selectedEventIndex] : null;
 
   const isDarkTheme =
     activeEvent?.theme === "dark" ||
@@ -180,13 +203,14 @@ export function TimelineSection() {
 
           {/* Alternating Left & Right Timeline Nodes */}
           <div className="flex flex-col gap-10 relative z-10 py-3">
-            {invitation.events.map((event, idx) => {
+            {displayedEvents.map((event, idx) => {
               const isEven = idx % 2 === 0;
-              const IconComponent = EVENT_ICONS[idx % EVENT_ICONS.length];
-              const illustrationUrl =
-                idx === 0
-                  ? "/templates/wedding/karan-weds-bhoomi/ganesh-transparent.png"
-                  : EVENT_ILLUSTRATIONS[idx % EVENT_ILLUSTRATIONS.length];
+              const meta = EVENT_META[event.id] || {
+                icon: Sparkles,
+                illustration: "/templates/wedding/karan-weds-bhoomi/ganesh-transparent.png",
+              };
+              const IconComponent = meta.icon;
+              const illustrationUrl = meta.illustration;
 
               // Clean day/time string
               const shortDate = event.dateLabel.includes("17th")
@@ -495,7 +519,7 @@ export function TimelineSection() {
                     onClick={() =>
                       setSelectedEventIndex((prev) =>
                         prev !== null
-                          ? (prev - 1 + invitation.events.length) % invitation.events.length
+                          ? (prev - 1 + displayedEvents.length) % displayedEvents.length
                           : 0
                       )
                     }
@@ -508,10 +532,10 @@ export function TimelineSection() {
                   {/* Ceremony Counter & Dots */}
                   <div className="flex flex-col items-center">
                     <span className="text-[9.5px] font-extrabold uppercase tracking-widest text-[#ffd97d] drop-shadow-sm">
-                      Ceremony {selectedEventIndex + 1} of {invitation.events.length}
+                      Ceremony {selectedEventIndex + 1} of {displayedEvents.length}
                     </span>
                     <div className="flex items-center gap-1.5 mt-1">
-                      {invitation.events.map((_, dotIdx) => (
+                      {displayedEvents.map((_, dotIdx) => (
                         <button
                           key={dotIdx}
                           onClick={() => setSelectedEventIndex(dotIdx)}
@@ -529,7 +553,7 @@ export function TimelineSection() {
                   <button
                     onClick={() =>
                       setSelectedEventIndex((prev) =>
-                        prev !== null ? (prev + 1) % invitation.events.length : 0
+                        prev !== null ? (prev + 1) % displayedEvents.length : 0
                       )
                     }
                     className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1.5 rounded-lg text-[#ffd97d] hover:text-white hover:bg-white/15 active:scale-95 transition-all cursor-pointer"

@@ -28,7 +28,12 @@ const VIDEO_ASSETS = {
   heroSection: "https://q7pv2gthbvkjs86k.public.blob.vercel-storage.com/templates/wedding/karan-weds-bhoomi/karan-weds-bhoomi-hero__1_.mp4",
 };
 
-export default function Main() {
+interface MainProps {
+  eventIds?: string[];
+  showRSVP?: boolean;
+}
+
+export default function Main({ eventIds, showRSVP = true }: MainProps = {}) {
   const [mounted, setMounted] = useState(false);
   const [cardOpened, setCardOpened] = useState(false);
   const [introFinished, setIntroFinished] = useState(false);
@@ -302,7 +307,7 @@ export default function Main() {
             </section>
 
             {/* 5. Wedding Functions & Schedule (The fun unfolds as follows - Interactive Timeline) */}
-            <TimelineSection />
+            <TimelineSection eventIds={eventIds} />
 
             {/* 6. Wedding Venue & Interactive Location Map */}
             <VenueSection />
@@ -376,7 +381,7 @@ export default function Main() {
             {/* <Gallery /> */}
 
             {/* Dynamic Guest RSVP Section */}
-            <RSVPSection allowAadhaar={true} />
+            {showRSVP && <RSVPSection allowAadhaar={true} />}
 
             {/* 7. Gift & Wishing Well Section (Hidden) */}
             {/* <section
