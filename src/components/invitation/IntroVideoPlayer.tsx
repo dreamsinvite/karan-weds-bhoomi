@@ -60,7 +60,7 @@ export const IntroVideoPlayer = forwardRef<IntroVideoPlayerHandle, IntroVideoPla
         });
       }, 100);
 
-      video.muted = false;
+      video.muted = true;
       const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise

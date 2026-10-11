@@ -20,7 +20,7 @@ import gardenBg from "@/assets/garden-bg.png";
 
 import { Gallery } from "./invitation/Gallery";
 import RSVPSection from "./RSVPSection";
-import { MusicPlayer } from "./invitation/MusicPlayer";
+import { MusicPlayer, type MusicPlayerHandle } from "./invitation/MusicPlayer";
 import { RainBackground } from "./invitation/RainBackground";
 
 const VIDEO_ASSETS = {
@@ -45,6 +45,7 @@ export default function Main() {
 
   const introContainerRef = useRef<HTMLDivElement>(null);
   const introVideoRef = useRef<IntroVideoPlayerHandle>(null);
+  const musicPlayerRef = useRef<MusicPlayerHandle | null>(null);
 
   const handleIntroCanPlay = () => {
     if (!introReadyRef.current) {
@@ -166,6 +167,7 @@ export default function Main() {
                 onOpen={() => setCardOpened(true)}
                 onOpenStart={() => {
                   introVideoRef.current?.startPlayback();
+                  musicPlayerRef.current?.playMusic();
                 }}
                 isReady={true}
               />
@@ -200,7 +202,7 @@ export default function Main() {
             className={`relative z-10 w-full ${!introFinished ? "h-[100vh] overflow-hidden pointer-events-none" : ""}`}
           >
             {/* Background Music Player */}
-            <MusicPlayer isOpened={introFinished} />
+            <MusicPlayer ref={musicPlayerRef} isOpened={introFinished} />
 
             {/* Ambient mobile background particle rain */}
             {introFinished && (
@@ -340,20 +342,31 @@ export default function Main() {
                     </>
                   )}
 
-                  <p className="text-xs sm:text-sm text-[#7A6568] font-serif italic leading-relaxed px-2">
+                  <p className="text-xs sm:text-sm text-[#8E5B61]/90 font-serif italic leading-relaxed px-2">
                     &ldquo;{invitation.groom.compliments.note}&rdquo;
                   </p>
 
                   {invitation.groom.compliments.closing && (
-                    <p className="text-xs sm:text-sm text-[#4A4A4A] font-semibold mt-4">
+                    <p className="text-xs sm:text-sm text-[#8E5B61] font-semibold mt-4">
                       {invitation.groom.compliments.closing}
                     </p>
                   )}
 
                   {invitation.groom.compliments.noteBlessings && (
-                    <p className="text-sm sm:text-base text-[#8E5B61] font-serif italic font-semibold mt-4">
-                      {invitation.groom.compliments.noteBlessings}
-                    </p>
+                    <div className="mt-4 space-y-1">
+                      {invitation.groom.compliments.noteBlessings.split("\n").map((line, i) => (
+                        <p
+                          key={i}
+                          className={`font-serif italic ${
+                            i === 0
+                              ? "text-sm sm:text-base text-[#8E5B61] font-semibold"
+                              : "text-base sm:text-lg text-[#8E5B61] font-bold"
+                          }`}
+                        >
+                          {line}
+                        </p>
+                      ))}
+                    </div>
                   )}
                 </div>
               </div>
