@@ -362,11 +362,10 @@ export default function Main({ eventIds, showRSVP = true }: MainProps = {}) {
                       {invitation.groom.compliments.noteBlessings.split("\n").map((line, i) => (
                         <p
                           key={i}
-                          className={`font-serif italic ${
-                            i === 0
+                          className={`font-serif italic ${i === 0
                               ? "text-sm sm:text-base text-[#8E5B61] font-semibold"
                               : "text-base sm:text-lg text-[#8E5B61] font-bold"
-                          }`}
+                            }`}
                         >
                           {line}
                         </p>
@@ -476,7 +475,7 @@ export default function Main({ eventIds, showRSVP = true }: MainProps = {}) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.0, ease: "easeOut" }}
-                className="relative z-10 w-full max-w-[340px] mx-auto pt-30 sm:pt-40 px-4 flex flex-col items-center"
+                className="relative z-10 w-full max-w-[340px] mx-auto pt-28 sm:pt-40 px-4 flex flex-col items-center"
               >
                 {/* Sacred Mantra */}
                 <div className="text-[#b91c1c] text-xs sm:text-sm font-bold tracking-widest mb-3 drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)] flex items-center justify-center gap-2">
