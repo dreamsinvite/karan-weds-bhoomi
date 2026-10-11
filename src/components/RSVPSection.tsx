@@ -136,6 +136,9 @@ export default function RSVPSection({ allowAadhaar = true }: { allowAadhaar?: bo
             phone: formData.phone,
             guests: guestCount,
             message: formData.message,
+            side: "Groom Side (Karan)",
+            inviteSide: "Groom Side (Karan)",
+            source: "karanwedsbhoomi.in",
             files: encodedFiles,
             template: "karan_bhoomi",
           }),
@@ -176,6 +179,7 @@ export default function RSVPSection({ allowAadhaar = true }: { allowAadhaar?: bo
       : "";
 
     const text = `*Wedding RSVP & Confirmation for Karan & Bhoomi #BKomeOne∞*
+*Side:* Groom Side (Karan)
 *Guest Name:* ${formData.name}
 *Contact Number:* ${formData.phone}
 *Number of Guests:* ${formData.guests}${fileListNote}
