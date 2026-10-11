@@ -357,9 +357,9 @@ export default function Main({ eventIds, showRSVP = true }: MainProps = {}) {
                     </p>
                   )}
 
-                  {invitation.groom.compliments.noteBlessings && (
+                  {"withLove" in invitation.groom.compliments && invitation.groom.compliments.withLove && (
                     <div className="mt-4 space-y-1">
-                      {invitation.groom.compliments.noteBlessings.split("\n").map((line, i) => (
+                      {invitation.groom.compliments.withLove.split("\n").map((line, i) => (
                         <p
                           key={i}
                           className={`font-serif italic ${i === 0
@@ -370,6 +370,12 @@ export default function Main({ eventIds, showRSVP = true }: MainProps = {}) {
                           {line}
                         </p>
                       ))}
+                    </div>
+                  )}
+
+                  {invitation.groom.compliments.noteBlessings && (
+                    <div className="mt-5 inline-block px-5 py-1.5 rounded-full bg-[#FFF0F0] border border-[#B76E79]/30 text-xs font-bold uppercase tracking-widest text-[#8E5B61] shadow-2xs">
+                      {invitation.groom.compliments.noteBlessings}
                     </div>
                   )}
                 </div>

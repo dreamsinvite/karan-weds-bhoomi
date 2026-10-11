@@ -72,7 +72,8 @@ export const invitation = {
       from: "",
       note: "To mark the auspicious commencement of Karan & Bhoomi’s lifelong journey, your loving presence and shower of blessings will grace our family’s most treasured occasion",
       closing: "We look forward to welcoming you with open hearts",
-      noteBlessings: "With Love\n‘Sundrani Family’",
+      withLove: "With Love\nSundrani Family",
+      noteBlessings: "Blessings Only",
     },
   },
 
