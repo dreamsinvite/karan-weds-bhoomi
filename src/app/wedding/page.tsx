@@ -35,7 +35,7 @@ const WEDDING_EVENTS = [
 ];
 
 const WEDDING_INTRO_VIDEO =
-  "https://q7pv2gthbvkjs86k.public.blob.vercel-storage.com/templates/wedding/karan-weds-bhoomi/18-Bhoomi.mp4";
+  "https://q7pv2gthbvkjs86k.public.blob.vercel-storage.com/templates/wedding/karan-weds-bhoomi/18-Bhoomi__3___1_.mp4";
 
 export default function WeddingPage() {
   return (
