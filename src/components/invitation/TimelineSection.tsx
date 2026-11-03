@@ -540,8 +540,8 @@ export function TimelineSection({ eventIds }: { eventIds?: string[] } = {}) {
                           key={dotIdx}
                           onClick={() => setSelectedEventIndex(dotIdx)}
                           className={`h-1.5 rounded-full transition-all cursor-pointer ${selectedEventIndex === dotIdx
-                              ? "w-5 bg-[#ffd97d] shadow-[0_0_8px_rgba(255,217,125,0.8)]"
-                              : "w-1.5 bg-white/40 hover:bg-white/75"
+                            ? "w-5 bg-[#ffd97d] shadow-[0_0_8px_rgba(255,217,125,0.8)]"
+                            : "w-1.5 bg-white/40 hover:bg-white/75"
                             }`}
                           aria-label={`Go to event ${dotIdx + 1}`}
                         />
