@@ -522,9 +522,8 @@ export function TimelineSection({ eventIds }: { eventIds?: string[] } = {}) {
                       )
                     }
                     disabled={selectedEventIndex === 0}
-                    className={`inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1.5 rounded-lg text-[#ffd97d] hover:text-white hover:bg-white/15 active:scale-95 transition-all cursor-pointer ${
-                      selectedEventIndex === 0 ? "opacity-35 pointer-events-none" : ""
-                    }`}
+                    className={`inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1.5 rounded-lg text-[#ffd97d] hover:text-white hover:bg-white/15 active:scale-95 transition-all cursor-pointer ${selectedEventIndex === 0 ? "opacity-35 pointer-events-none" : ""
+                      }`}
                   >
                     <ChevronLeft size={14} strokeWidth={2.5} />
                     <span>Prev</span>
@@ -540,11 +539,10 @@ export function TimelineSection({ eventIds }: { eventIds?: string[] } = {}) {
                         <button
                           key={dotIdx}
                           onClick={() => setSelectedEventIndex(dotIdx)}
-                          className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                            selectedEventIndex === dotIdx
+                          className={`h-1.5 rounded-full transition-all cursor-pointer ${selectedEventIndex === dotIdx
                               ? "w-5 bg-[#ffd97d] shadow-[0_0_8px_rgba(255,217,125,0.8)]"
                               : "w-1.5 bg-white/40 hover:bg-white/75"
-                          }`}
+                            }`}
                           aria-label={`Go to event ${dotIdx + 1}`}
                         />
                       ))}
