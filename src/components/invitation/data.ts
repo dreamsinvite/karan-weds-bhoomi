@@ -141,7 +141,7 @@ export const invitation = {
       tagline: "Witness total chaos,\nwild cousins, crazy dancing friends &\nclassic 90s uncle moves!",
       time: "03:30 PM Onwards",
       dateLabel: "Friday, 18th December 2026",
-      venue: "Main Entrance",
+      venue: "Main Entrance, Sunset Lawn, Discover Resorts",
       address: "Discover Resorts, Karjat",
       mapUrl: "https://maps.google.com/?q=Sunset+Lawn+Discover+Resorts+Karjat",
       attireTitle: "",
