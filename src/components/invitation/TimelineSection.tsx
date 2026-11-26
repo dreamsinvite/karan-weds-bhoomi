@@ -249,7 +249,7 @@ export function TimelineSection({ eventIds }: { eventIds?: string[] } = {}) {
                         </div>
 
                         <div className="w-9 h-9 rounded-full border border-[#B76E79]/30 bg-white/95 flex items-center justify-center text-[#8E5B61] shrink-0 shadow-xs group-hover:bg-[#8E5B61] group-hover:text-white transition-colors overflow-hidden p-1">
-                          {idx === 0 ? (
+                          {event.id === "mandap-muhurat" ? (
                             <img
                               src="/templates/wedding/karan-weds-bhoomi/ganesh-transparent.png"
                               alt="Lord Ganesha"
